@@ -9,6 +9,11 @@
         <link rel="stylesheet" href="/css/app.css" />
     </head>
     <body>
+        <header>
+            <h1>
+                <a href="/" title="VH Challenge - Q&A">VH Challenge - Q&A</a>
+            </h1>
+        </header>
         <main>
             @yield('main')
         </main>
