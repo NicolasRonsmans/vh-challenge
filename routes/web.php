@@ -11,25 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    $questions = App\Question::orderBy('id', 'desc')->get();
-    $entries = [];
-
-    foreach ($questions as $question) {
-        $entries[] = [
-            'question' => $question,
-            'answers' => count($question->answers)
-        ];
-    }
-
-    return view('pages/home', ['title' => 'Home', 'entries' => $entries]);
+Route::get('/', 'QuestionsController@index');
+Route::get('questions/{id}', 'QuestionsController@view');
+Route::get('questions/', function () {
+    return redirect('/');
 });
 
-Route::get('questions/{id}', function ($question_id) {
-    $question = App\Question::findOrFail($question_id);
-
-    return view('pages/question', [
-        'title' => $question->body,
-        'question' => $question
-    ]);
-});
+Route::post('questions/', 'QuestionsController@store');
+Route::post('questions/{id}/answers', 'AnswersController@store');
