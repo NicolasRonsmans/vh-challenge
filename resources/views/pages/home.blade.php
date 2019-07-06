@@ -17,7 +17,7 @@
         <form action="/questions" method="POST" id="form-question">
             @csrf
             <div class="form-group">
-                <textarea name="body" class="form-control @error('body') is-invalid @enderror" placeholder="Enter your question here...">{{ old('body') }}</textarea>
+                <textarea name="body" class="form-control @error('body') is-invalid @enderror" placeholder="{{ $placeholder }}">{{ old('body') }}</textarea>
                 @error('body')
                     <div class="invalid-feedback d-block">{{ $message }}</div>
                 @enderror
