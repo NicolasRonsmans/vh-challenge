@@ -12,5 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $questions = App\Question::all();
+
+    return view('pages/home', ['title' => 'Home', 'questions' => $questions]);
+});
+
+Route::get('questions/{id}', function ($question_id) {
+    return view('pages/question', ['title' => "Question $question_id"]);
 });
