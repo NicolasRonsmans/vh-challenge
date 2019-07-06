@@ -12,11 +12,24 @@
 */
 
 Route::get('/', function () {
-    $questions = App\Question::all();
+    $questions = App\Question::orderBy('id', 'desc')->get();
+    $entries = [];
 
-    return view('pages/home', ['title' => 'Home', 'questions' => $questions]);
+    foreach ($questions as $question) {
+        $entries[] = [
+            'question' => $question,
+            'answers' => count($question->answers)
+        ];
+    }
+
+    return view('pages/home', ['title' => 'Home', 'entries' => $entries]);
 });
 
 Route::get('questions/{id}', function ($question_id) {
-    return view('pages/question', ['title' => "Question $question_id"]);
+    $question = App\Question::findOrFail($question_id);
+
+    return view('pages/question', [
+        'title' => $question->body,
+        'question' => $question
+    ]);
 });
