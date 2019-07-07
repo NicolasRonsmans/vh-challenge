@@ -3,6 +3,7 @@
 ## Install
 
 ```
+npm i
 php artisan migrate:refresh --seed
 ```
 
@@ -10,6 +11,18 @@ php artisan migrate:refresh --seed
 
 ```
 php artisan serve
+```
+
+### PHP only
+
+```
+http://localhost:8000
+```
+
+### PHP + React
+
+```
+http://localhost:8000/spa
 ```
 
 ## Author
