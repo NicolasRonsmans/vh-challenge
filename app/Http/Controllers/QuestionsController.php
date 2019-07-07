@@ -18,18 +18,10 @@ class QuestionsController extends Controller
             'Write something here...',
             'Please ask anything...'
         ]);
-        $entries = [];
-
-        foreach ($questions as $question) {
-            $entries[] = [
-                'question' => $question,
-                'answers' => count($question->answers)
-            ];
-        }
 
         return view('pages/home', [
             'title' => 'Home',
-            'entries' => $entries,
+            'questions' => $questions,
             'placeholder' => $placeholder
         ]);
     }
