@@ -5,10 +5,10 @@
 @section('main')
     <section class="list-group">
         <h1 class="h2 list-group-item bg-info text-white">Questions list</h1>
-        @foreach ($entries as $entry)
-            <a href="/questions/{{ $entry['question']->id }}" title="{{ $entry['question']->body}}" class="list-group-item list-group-item-action d-flex align-items-start justify-content-between">
-                {{ $entry['question']->body }}
-                <span class="badge badge-info">{{ $entry['answers'] }} {{ $entry['answers'] < 2 ? 'answer' : 'answers' }}</span>
+        @foreach ($questions as $question)
+            <a href="/questions/{{ $question->id }}" title="{{ $question->body}}" class="list-group-item list-group-item-action d-flex align-items-start justify-content-between">
+                {{ $question->body }}
+                <span class="badge badge-info">{{ count($question->answers) }} {{ count($question->answers) < 2 ? 'answer' : 'answers' }}</span>
             </a>
         @endforeach
     </section>
